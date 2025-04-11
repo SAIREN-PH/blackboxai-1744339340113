@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements & Challenges - BinGo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#10B981',
+                        secondary: '#3B82F6',
+                        dark: '#1F2937',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .badge-glow {
+            animation: glow 2s ease-in-out infinite;
+        }
+        @keyframes glow {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="dashboard.html" class="text-2xl font-poppins font-bold text-primary">Bin<span class="text-secondary">Go</span></a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Token Balance -->
+                    <div class="bg-primary/10 px-4 py-2 rounded-full">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-coins text-primary"></i>
+                            <span class="font-medium text-primary">127 Tokens</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Level Badge -->
+                    <div class="bg-secondary/10 px-4 py-2 rounded-full">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-star text-secondary"></i>
+                            <span class="font-medium text-secondary">Level 8</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Profile -->
+                    <a href="dashboard.html" class="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe" alt="Profile" class="h-8 w-8 rounded-full">
+                        <span>John Doe</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <!-- User Progress Overview -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary">52</div>
+                    <div class="text-sm text-gray-500">Badges Earned</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-secondary">15</div>
+                    <div class="text-sm text-gray-500">Challenges Completed</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-yellow-500">8</div>
+                    <div class="text-sm text-gray-500">Current Level</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-purple-500">3,250</div>
+                    <div class="text-sm text-gray-500">Total Points</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Badges Section -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Recent Badges -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Recent Badges</h2>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                        <!-- Badge 1 -->
+                        <div class="text-center">
+                            <div class="inline-block p-4 rounded-full bg-primary/10 badge-glow">
+                                <i class="fas fa-award text-3xl text-primary"></i>
+                            </div>
+                            <p class="mt-3 font-medium text-gray-900">Plastic Pro</p>
+                            <p class="text-sm text-gray-500">Recycled 50kg plastic</p>
+                            <p class="text-xs text-primary mt-1">Earned today</p>
+                        </div>
+                        
+                        <!-- Badge 2 -->
+                        <div class="text-center">
+                            <div class="inline-block p-4 rounded-full bg-secondary/10">
+                                <i class="fas fa-tree text-3xl text-secondary"></i>
+                            </div>
+                            <p class="mt-3 font-medium text-gray-900">Earth Savior</p>
+                            <p class="text-sm text-gray-500">Saved 100kg CO₂</p>
+                            <p class="text-xs text-gray-500 mt-1">2 days ago</p>
+                        </div>
+                        
+                        <!-- Badge 3 -->
+                        <div class="text-center">
+                            <div class="inline-block p-4 rounded-full bg-yellow-100">
+                                <i class="fas fa-star text-3xl text-yellow-500"></i>
+                            </div>
+                            <p class="mt-3 font-medium text-gray-900">Early Bird</p>
+                            <p class="text-sm text-gray-500">First daily recycler</p>
+                            <p class="text-xs text-gray-500 mt-1">3 days ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Challenges -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Active Challenges</h2>
+                    <div class="space-y-6">
+                        <!-- Challenge 1 -->
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <i class="fas fa-recycle text-primary mr-3"></i>
+                                    <div>
+                                        <h3 class="font-medium text-gray-900">Weekly Warrior</h3>
+                                        <p class="text-sm text-gray-500">Recycle 20kg this week</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm font-medium text-primary">15/20 kg</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                            <div class="mt-2 flex justify-between text-xs text-gray-500">
+                                <span>Reward: 50 tokens</span>
+                                <span>3 days left</span>
+                            </div>
+                        </div>
+
+                        <!-- Challenge 2 -->
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <i class="fas fa-users text-secondary mr-3"></i>
+                                    <div>
+                                        <h3 class="font-medium text-gray-900">Community Champion</h3>
+                                        <p class="text-sm text-gray-500">Help reach 1000kg collectively</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm font-medium text-secondary">750/1000 kg</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                            <div class="mt-2 flex justify-between text-xs text-gray-500">
+                                <span>Reward: Tree planting event</span>
+                                <span>5 days left</span>
+                            </div>
+                        </div>
+
+                        <!-- Challenge 3 -->
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <i class="fas fa-water text-blue-500 mr-3"></i>
+                                    <div>
+                                        <h3 class="font-medium text-gray-900">Plastic Pioneer</h3>
+                                        <p class="text-sm text-gray-500">Recycle 10kg of plastic bottles</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm font-medium text-blue-500">4/10 kg</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 40%"></div>
+                            </div>
+                            <div class="mt-2 flex justify-between text-xs text-gray-500">
+                                <span>Reward: 30 tokens</span>
+                                <span>7 days left</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="space-y-8">
+                <!-- Level Progress -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Level Progress</h2>
+                    <div class="text-center mb-6">
+                        <div class="inline-block p-4 rounded-full bg-secondary/10">
+                            <i class="fas fa-star text-4xl text-secondary"></i>
+                        </div>
+                        <p class="mt-3 text-2xl font-bold text-gray-900">Level 8</p>
+                        <p class="text-sm text-gray-500">Eco Warrior</p>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-gray-500">Progress to Level 9</span>
+                            <span class="text-secondary font-medium">3,250/4,000 XP</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-secondary h-2 rounded-full" style="width: 81%"></div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 text-center">750 XP needed for next level</p>
+                </div>
+
+                <!-- Upcoming Rewards -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Next Level Rewards</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                                <i class="fas fa-gift text-primary"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="font-medium text-gray-900">50 Bonus Tokens</p>
+                                <p class="text-sm text-gray-500">Level 9 reward</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center">
+                                <i class="fas fa-crown text-secondary"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="font-medium text-gray-900">Exclusive Badge</p>
+                                <p class="text-sm text-gray-500">Level 9 reward</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Goals -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Community Goals</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-900 font-medium">Monthly Recycling Goal</span>
+                                <span class="text-primary">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                            <p class="mt-2 text-sm text-gray-500">750/1000 kg collected</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-900 font-medium">Tree Planting Goal</span>
+                                <span class="text-green-600">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                            <p class="mt-2 text-sm text-gray-500">45/50 trees funded</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
