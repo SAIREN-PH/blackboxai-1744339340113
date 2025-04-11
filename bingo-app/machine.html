@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BinGo Machine Interface</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#10B981',
+                        secondary: '#3B82F6',
+                        dark: '#1F2937',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 3s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .processing-animation {
+            animation: processing 2s ease-in-out infinite;
+        }
+        @keyframes processing {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .progress-bar {
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Machine Header -->
+    <div class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl font-poppins font-bold text-primary">Bin<span class="text-secondary">Go</span></span>
+                    <span class="ml-4 px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                        Machine ID: BG-001
+                    </span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">Machine Status:</span>
+                    <span class="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                        Ready
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <!-- Left Column: Machine Interface -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <div id="authentication-section">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Authentication Required</h2>
+                    <p class="text-gray-600 mb-6">Please authenticate to start recycling</p>
+                    
+                    <div class="space-y-4">
+                        <button onclick="simulateAuth('nfc')" class="w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                            <i class="fas fa-mobile-alt mr-2"></i>
+                            Tap Phone (NFC)
+                        </button>
+                        
+                        <button onclick="simulateAuth('qr')" class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-md shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                            <i class="fas fa-qrcode mr-2"></i>
+                            Scan QR Code
+                        </button>
+                    </div>
+                </div>
+
+                <div id="waste-processing-section" class="hidden">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Waste Processing</h2>
+                    
+                    <!-- Deposit Instructions -->
+                    <div id="deposit-instructions" class="mb-6">
+                        <p class="text-gray-600">Please deposit your waste in the bin below. Our smart sensors will automatically sort and process it.</p>
+                        <button onclick="startProcessing()" class="mt-4 w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary hover:bg-primary/90">
+                            <i class="fas fa-recycle mr-2"></i>
+                            Start Processing
+                        </button>
+                    </div>
+
+                    <!-- Processing Animation -->
+                    <div id="processing-animation" class="hidden text-center py-8">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
+                            <i class="fas fa-recycle text-3xl text-primary processing-animation"></i>
+                        </div>
+                        <p class="mt-4 text-gray-600">Processing your waste...</p>
+                        <div class="mt-4 w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="progress-bar bg-primary h-2.5 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div id="processing-results" class="hidden">
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                            <h3 class="text-lg font-medium text-green-800">Processing Complete!</h3>
+                            <div class="mt-4 space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Plastic</span>
+                                    <span class="font-medium">500g</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Paper</span>
+                                    <span class="font-medium">200g</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Metal</span>
+                                    <span class="font-medium">300g</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-primary/10 rounded-lg p-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-medium text-primary">Tokens Earned</span>
+                                <span class="text-2xl font-bold text-primary">12</span>
+                            </div>
+                        </div>
+
+                        <button onclick="resetMachine()" class="mt-6 w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-md shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50">
+                            Process More Waste
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Stats & Impact -->
+            <div class="space-y-6">
+                <!-- Current Session -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Current Session</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="text-sm text-gray-500">Total Waste Processed</div>
+                            <div class="mt-1 text-2xl font-semibold text-gray-900">1.0 kg</div>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="text-sm text-gray-500">CO₂ Saved</div>
+                            <div class="mt-1 text-2xl font-semibold text-gray-900">3.0 kg</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Environmental Impact -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Environmental Impact</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-tree text-green-500 text-xl w-8"></i>
+                            <div class="ml-3">
+                                <div class="text-sm text-gray-500">Trees Saved</div>
+                                <div class="text-lg font-semibold text-gray-900">0.5</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-bolt text-yellow-500 text-xl w-8"></i>
+                            <div class="ml-3">
+                                <div class="text-sm text-gray-500">Energy Saved</div>
+                                <div class="text-lg font-semibold text-gray-900">50 kWh</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-water text-blue-500 text-xl w-8"></i>
+                            <div class="ml-3">
+                                <div class="text-sm text-gray-500">Water Saved</div>
+                                <div class="text-lg font-semibold text-gray-900">100 L</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function simulateAuth(method) {
+            const authSection = document.getElementById('authentication-section');
+            const processingSection = document.getElementById('waste-processing-section');
+            
+            // Simulate authentication process
+            authSection.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin text-3xl text-primary"></i><p class="mt-4 text-gray-600">Authenticating...</p></div>';
+            
+            setTimeout(() => {
+                authSection.classList.add('hidden');
+                processingSection.classList.remove('hidden');
+            }, 2000);
+        }
+
+        function startProcessing() {
+            const instructions = document.getElementById('deposit-instructions');
+            const animation = document.getElementById('processing-animation');
+            const results = document.getElementById('processing-results');
+            const progressBar = document.querySelector('.progress-bar');
+            
+            instructions.classList.add('hidden');
+            animation.classList.remove('hidden');
+            
+            // Simulate processing progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 20;
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        animation.classList.add('hidden');
+                        results.classList.remove('hidden');
+                    }, 500);
+                }
+            }, 1000);
+        }
+
+        function resetMachine() {
+            const processingSection = document.getElementById('waste-processing-section');
+            const authSection = document.getElementById('authentication-section');
+            const instructions = document.getElementById('deposit-instructions');
+            const animation = document.getElementById('processing-animation');
+            const results = document.getElementById('processing-results');
+            
+            // Reset all sections
+            processingSection.classList.add('hidden');
+            authSection.classList.remove('hidden');
+            instructions.classList.remove('hidden');
+            animation.classList.add('hidden');
+            results.classList.add('hidden');
+            
+            // Reset progress bar
+            document.querySelector('.progress-bar').style.width = '0%';
+        }
+    </script>
+</body>
+</html>
