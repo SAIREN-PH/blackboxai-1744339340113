@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewards Hub - BinGo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#10B981',
+                        secondary: '#3B82F6',
+                        dark: '#1F2937',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .reward-card:hover .reward-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="dashboard.html" class="text-2xl font-poppins font-bold text-primary">Bin<span class="text-secondary">Go</span></a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Token Balance -->
+                    <div class="bg-primary/10 px-4 py-2 rounded-full">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-coins text-primary"></i>
+                            <span class="font-medium text-primary">127 Tokens</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <button class="relative p-2 text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-bell"></i>
+                        <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-400"></span>
+                    </button>
+                    
+                    <!-- Profile -->
+                    <a href="dashboard.html" class="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe" alt="Profile" class="h-8 w-8 rounded-full">
+                        <span>John Doe</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 font-poppins">Rewards Hub</h1>
+            <p class="mt-2 text-gray-600">Redeem your tokens for exciting rewards and benefits</p>
+        </div>
+
+        <!-- Categories -->
+        <div class="flex overflow-x-auto space-x-4 pb-4 mb-8">
+            <button class="flex-shrink-0 px-4 py-2 bg-primary text-white rounded-full">All Rewards</button>
+            <button class="flex-shrink-0 px-4 py-2 bg-white text-gray-600 rounded-full hover:bg-gray-50">Connectivity</button>
+            <button class="flex-shrink-0 px-4 py-2 bg-white text-gray-600 rounded-full hover:bg-gray-50">Power Up</button>
+            <button class="flex-shrink-0 px-4 py-2 bg-white text-gray-600 rounded-full hover:bg-gray-50">Hydration</button>
+            <button class="flex-shrink-0 px-4 py-2 bg-white text-gray-600 rounded-full hover:bg-gray-50">Partner Deals</button>
+        </div>
+
+        <!-- Featured Rewards -->
+        <div class="mb-12">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">Featured Rewards</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Featured Reward Card 1 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <div class="relative h-48 bg-gray-200">
+                        <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg" alt="Free WiFi" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Popular
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-medium text-gray-900">1 Hour Free WiFi</h3>
+                            <span class="flex items-center text-primary font-medium">
+                                <i class="fas fa-coins mr-1"></i>
+                                5 tokens
+                            </span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Stay connected with high-speed internet access at any BinGo station.</p>
+                        <button onclick="showRedeemModal('1 Hour Free WiFi', 5)" class="w-full bg-primary text-white py-2 rounded-md hover:bg-primary/90 transition-colors">
+                            Redeem Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Featured Reward Card 2 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <div class="relative h-48 bg-gray-200">
+                        <img src="https://images.pexels.com/photos/3850512/pexels-photo-3850512.jpeg" alt="Device Charging" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-secondary text-white px-3 py-1 rounded-full text-sm font-medium">
+                            New
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-medium text-gray-900">30min Power Boost</h3>
+                            <span class="flex items-center text-primary font-medium">
+                                <i class="fas fa-coins mr-1"></i>
+                                3 tokens
+                            </span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Quick device charging at any BinGo station's power outlet.</p>
+                        <button onclick="showRedeemModal('30min Power Boost', 3)" class="w-full bg-primary text-white py-2 rounded-md hover:bg-primary/90 transition-colors">
+                            Redeem Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Featured Reward Card 3 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <div class="relative h-48 bg-gray-200">
+                        <img src="https://images.pexels.com/photos/1346132/pexels-photo-1346132.jpeg" alt="Water Credits" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-medium text-gray-900">500ml Water Credit</h3>
+                            <span class="flex items-center text-primary font-medium">
+                                <i class="fas fa-coins mr-1"></i>
+                                2 tokens
+                            </span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Refresh yourself with clean drinking water from our dispensers.</p>
+                        <button onclick="showRedeemModal('500ml Water Credit', 2)" class="w-full bg-primary text-white py-2 rounded-md hover:bg-primary/90 transition-colors">
+                            Redeem Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partner Deals -->
+        <div>
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">Partner Deals</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Partner Deal 1 -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <img src="https://ui-avatars.com/api/?name=Eco+Store" alt="Eco Store" class="w-16 h-16 rounded-full mb-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">20% Off at Eco Store</h3>
+                    <p class="text-sm text-gray-600 mb-4">Valid on all eco-friendly products</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="flex items-center text-primary font-medium">
+                            <i class="fas fa-coins mr-1"></i>
+                            10 tokens
+                        </span>
+                        <span class="text-sm text-gray-500">Valid for 30 days</span>
+                    </div>
+                    <button onclick="showRedeemModal('20% Off at Eco Store', 10)" class="w-full bg-primary text-white py-2 rounded-md hover:bg-primary/90 transition-colors">
+                        Redeem Now
+                    </button>
+                </div>
+
+                <!-- Partner Deal 2 -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <img src="https://ui-avatars.com/api/?name=Green+Cafe" alt="Green Cafe" class="w-16 h-16 rounded-full mb-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Free Coffee at Green Cafe</h3>
+                    <p class="text-sm text-gray-600 mb-4">One regular coffee of your choice</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="flex items-center text-primary font-medium">
+                            <i class="fas fa-coins mr-1"></i>
+                            15 tokens
+                        </span>
+                        <span class="text-sm text-gray-500">Valid for 7 days</span>
+                    </div>
+                    <button onclick="showRedeemModal('Free Coffee at Green Cafe', 15)" class="w-full bg-primary text-white py-2 rounded-md hover:bg-primary/90 transition-colors">
+                        Redeem Now
+                    </button>
+                </div>
+
+                <!-- Partner Deal 3 -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <img src="https://ui-avatars.com/api/?name=Eco+Transport" alt="Eco Transport" class="w-16 h-16 rounded-full mb-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">$5 Off Eco Transport</h3>
+                    <p class="text-sm text-gray-600 mb-4">Valid on your next ride</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="flex items-center text-primary font-medium">
+                            <i class="fas fa-coins mr-1"></i>
+                            8 tokens
+                        </span>
+                        <span class="text-sm text-gray-500">Valid for 14 days</span>
+                    </div>
+                    <button onclick="showRedeemModal('$5 Off Eco Transport', 8)" class="w-full bg-primary text-white py-2 rounded-md hover:bg-primary/90 transition-colors">
+                        Redeem Now
+                    </button>
+                </div>
+
+                <!-- Partner Deal 4 -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <img src="https://ui-avatars.com/api/?name=Green+Market" alt="Green Market" class="w-16 h-16 rounded-full mb-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">$10 Green Market Voucher</h3>
+                    <p class="text-sm text-gray-600 mb-4">Shop fresh organic produce</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="flex items-center text-primary font-medium">
+                            <i class="fas fa-coins mr-1"></i>
+                            20 tokens
+                        </span>
+                        <span class="text-sm text-gray-500">Valid for 60 days</span>
+                    </div>
+                    <button onclick="showRedeemModal('$10 Green Market Voucher', 20)" class="w-full bg-primary text-white py-2 rounded-md hover:bg-primary/90 transition-colors">
+                        Redeem Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Redeem Modal -->
+    <div id="redeemModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-primary/20">
+                    <i class="fas fa-gift text-primary text-xl"></i>
+                </div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900 mt-4" id="modalTitle">Redeem Reward</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500" id="modalDescription">You are about to redeem this reward for <span id="tokenCost">0</span> tokens.</p>
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button id="confirmRedeem" class="px-4 py-2 bg-primary text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary">
+                        Confirm Redemption
+                    </button>
+                    <button onclick="hideRedeemModal()" class="mt-3 px-4 py-2 bg-gray-100 text-gray-700 text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showRedeemModal(rewardName, tokens) {
+            const modal = document.getElementById('redeemModal');
+            const title = document.getElementById('modalTitle');
+            const description = document.getElementById('modalDescription');
+            const tokenCost = document.getElementById('tokenCost');
+            const confirmButton = document.getElementById('confirmRedeem');
+
+            title.textContent = `Redeem ${rewardName}`;
+            tokenCost.textContent = tokens;
+            modal.classList.remove('hidden');
+
+            confirmButton.onclick = () => {
+                // Simulate redemption
+                alert('Reward redeemed successfully! Check your notifications for the redemption code.');
+                hideRedeemModal();
+            };
+        }
+
+        function hideRedeemModal() {
+            document.getElementById('redeemModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
