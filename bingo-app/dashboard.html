@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BinGo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#10B981',
+                        secondary: '#3B82F6',
+                        dark: '#1F2937',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-poppins font-bold text-primary">Bin<span class="text-secondary">Go</span></span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Token Balance -->
+                    <div class="bg-primary/10 px-4 py-2 rounded-full">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-coins text-primary"></i>
+                            <span class="font-medium text-primary">127 Tokens</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <button class="relative p-2 text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-bell"></i>
+                        <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-400"></span>
+                    </button>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
+                            <img src="https://ui-avatars.com/api/?name=John+Doe" alt="Profile" class="h-8 w-8 rounded-full">
+                            <span>John Doe</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <!-- Quick Actions -->
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3 mb-8">
+            <a href="machine.html" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-recycle text-2xl text-primary"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="text-lg font-medium text-gray-900">Recycle Now</h3>
+                        <p class="text-sm text-gray-500">Find nearest BinGo machine</p>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="rewards.html" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-gift text-2xl text-secondary"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="text-lg font-medium text-gray-900">Rewards</h3>
+                        <p class="text-sm text-gray-500">Redeem your tokens</p>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="#" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-trophy text-2xl text-yellow-500"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="text-lg font-medium text-gray-900">Challenges</h3>
+                        <p class="text-sm text-gray-500">Complete for bonus tokens</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+            <!-- Main Content Area -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Nearby Stations -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Nearby BinGo Stations</h2>
+                    <div class="bg-gray-100 rounded-lg h-64 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-map-marker-alt text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-500">Interactive map will be displayed here</p>
+                        </div>
+                    </div>
+                    <!-- Station List -->
+                    <div class="mt-4 space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-location-dot text-primary mr-3"></i>
+                                <div>
+                                    <h3 class="font-medium">Central Station</h3>
+                                    <p class="text-sm text-gray-500">0.5 km away</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">25% Full</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-location-dot text-primary mr-3"></i>
+                                <div>
+                                    <h3 class="font-medium">West Mall</h3>
+                                    <p class="text-sm text-gray-500">1.2 km away</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">75% Full</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Waste Analytics -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Your Recycling Impact</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="text-sm text-gray-500">Total Recycled</div>
+                            <div class="mt-1 text-2xl font-semibold text-gray-900">52.3 kg</div>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="text-sm text-gray-500">CO₂ Saved</div>
+                            <div class="mt-1 text-2xl font-semibold text-gray-900">156.9 kg</div>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="text-sm text-gray-500">Trees Saved</div>
+                            <div class="mt-1 text-2xl font-semibold text-gray-900">2.5</div>
+                        </div>
+                    </div>
+                    <!-- Recycling Breakdown -->
+                    <h3 class="font-medium text-gray-900 mb-3">Recycling Breakdown</h3>
+                    <div class="space-y-3">
+                        <div class="relative pt-1">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-sm font-medium text-gray-900">Plastic</span>
+                                </div>
+                                <div class="text-sm text-gray-500">45%</div>
+                            </div>
+                            <div class="overflow-hidden h-2 mt-1 text-xs flex rounded bg-gray-200">
+                                <div class="w-[45%] bg-primary"></div>
+                            </div>
+                        </div>
+                        <div class="relative pt-1">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-sm font-medium text-gray-900">Paper</span>
+                                </div>
+                                <div class="text-sm text-gray-500">30%</div>
+                            </div>
+                            <div class="overflow-hidden h-2 mt-1 text-xs flex rounded bg-gray-200">
+                                <div class="w-[30%] bg-secondary"></div>
+                            </div>
+                        </div>
+                        <div class="relative pt-1">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-sm font-medium text-gray-900">Metal</span>
+                                </div>
+                                <div class="text-sm text-gray-500">25%</div>
+                            </div>
+                            <div class="overflow-hidden h-2 mt-1 text-xs flex rounded bg-gray-200">
+                                <div class="w-[25%] bg-yellow-500"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="space-y-6">
+                <!-- Leaderboard -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Top Recyclers</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <img src="https://ui-avatars.com/api/?name=Sarah+Smith" alt="Sarah" class="h-10 w-10 rounded-full">
+                            <div class="ml-3 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-sm font-medium text-gray-900">Sarah Smith</h3>
+                                    <span class="text-sm text-primary font-medium">1,200 tokens</span>
+                                </div>
+                                <p class="text-sm text-gray-500">Recycled 120kg this month</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <img src="https://ui-avatars.com/api/?name=John+Doe" alt="John" class="h-10 w-10 rounded-full">
+                            <div class="ml-3 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-sm font-medium text-gray-900">John Doe</h3>
+                                    <span class="text-sm text-primary font-medium">980 tokens</span>
+                                </div>
+                                <p class="text-sm text-gray-500">Recycled 98kg this month</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <img src="https://ui-avatars.com/api/?name=Emma+Wilson" alt="Emma" class="h-10 w-10 rounded-full">
+                            <div class="ml-3 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-sm font-medium text-gray-900">Emma Wilson</h3>
+                                    <span class="text-sm text-primary font-medium">850 tokens</span>
+                                </div>
+                                <p class="text-sm text-gray-500">Recycled 85kg this month</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Badges -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Recent Badges</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center">
+                            <div class="inline-block p-3 rounded-full bg-primary/10">
+                                <i class="fas fa-award text-2xl text-primary"></i>
+                            </div>
+                            <p class="mt-2 text-sm font-medium text-gray-900">Plastic Pro</p>
+                            <p class="text-xs text-gray-500">50kg plastic recycled</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="inline-block p-3 rounded-full bg-secondary/10">
+                                <i class="fas fa-star text-2xl text-secondary"></i>
+                            </div>
+                            <p class="mt-2 text-sm font-medium text-gray-900">Early Bird</p>
+                            <p class="text-xs text-gray-500">First to recycle today</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Challenges -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Active Challenges</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-sm font-medium text-gray-900">Weekly Warrior</h3>
+                                <span class="text-xs text-primary">15/20 kg</span>
+                            </div>
+                            <div class="overflow-hidden h-2 text-xs flex rounded bg-gray-200">
+                                <div class="w-3/4 bg-primary"></div>
+                            </div>
+                            <p class="mt-2 text-xs text-gray-500">Recycle 20kg this week</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-sm font-medium text-gray-900">Community Goal</h3>
+                                <span class="text-xs text-secondary">750/1000 kg</span>
+                            </div>
+                            <div class="overflow-hidden h-2 text-xs flex rounded bg-gray-200">
+                                <div class="w-3/4 bg-secondary"></div>
+                            </div>
+                            <p class="mt-2 text-xs text-gray-500">Help reach 1 ton collectively</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
